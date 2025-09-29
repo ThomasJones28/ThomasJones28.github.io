@@ -18,3 +18,21 @@ a:active {
     background-color: transparent;
     text-decoration: underline;
 }
+.body_wrapper {
+    box-sizing: border-box;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+html, body {
+    box-sizing: border-box;
+    height: 100%;
+}
+footer {
+    background: gray;
+    color: white;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
