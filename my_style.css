@@ -37,7 +37,7 @@ footer {
     align-items: center;
 }
 nav {
-    background-color: green;
+    background-color: forestgreen;
     padding: 10px;
     display: flex;
     gap: 20px;
@@ -57,4 +57,16 @@ nav a:active {
 }
 nav a.current {
     color: purple;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: yellow; 
+}
+::-webkit-scrollbar-thumb {
+  background: orange; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: purple; 
 }
