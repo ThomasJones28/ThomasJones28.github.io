@@ -2,58 +2,67 @@
 
 
 function compute_days(){
-    const dob = get_dob();
-    
-    // Add code here computing the age in number of days!
-    
-    
-    write_answer_days("Sorry! This function has not yet been modified by the developper. <br>" + 
-    "So far we know that your date of birth is: " + dob )
+     const dobStr = get_dob();
+     if (!dobStr) {
+        write_answer_days("Please enter your date of birth.");
+        return;
+    }
+    const dob = new Date(dobStr);
+    const today = new Date();
+    const diffDays = Math.floor((today - dob) / (1000 * 60 * 60 * 24));
+  write_answer_days(`You are approximately ${diffDays.toLocaleString()} days old.`);
 }
 
 
 
 function compute_circle(){
-    const screen = get_screen_dims();
-    
-    // Add code here computing the radius and area of the circle
-
-
-
-    write_answer_circle("Sorry! This function has not yet been modified by the developper. <br>" + 
-    "So far we know your screen properties: " + screen.width + " x " + screen.height)
+  const screen = get_screen_dims();
+  const radius = Math.floor(Math.min(screen.width, screen.height) / 2);
+  const area = Math.PI * radius * radius;
+  write_answer_circle(
+    `Screen: ${screen.width} × ${screen.height}<br>` +
+    `Radius: ${radius}px<br>` +
+    `Area: ${area.toFixed(2)} px²`
+  );
 }
-
 
 
 function check_palindrome(){
-    const text_input = get_palindrome();
-    
-    // Add code here checking if text_input is a palindrome.
-    // You must use a for loop
-    // Hint: choose how to manage spaces and capital/lowercase letters!
-    
-    
-    write_answer_palindrome("Sorry! This function has not yet been modified by the developper. <br>" + 
-    "Your text: " + text_input + "<br> But I don't know if it is a palindrome?")
+const text_input = get_palindrome();
+  const cleaned = (text_input || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+  let isPal = true;
+  for (let i = 0, j = cleaned.length - 1; i < j; i++, j--) {
+    if (cleaned[i] !== cleaned[j]) {
+      isPal = false;
+      break;
+    }
+  }
+
+  write_answer_palindrome(
+    `"${text_input}" ${isPal ? "is" : "is NOT"} a palindrome.`
+  );
 }
 
 
 
-function create_fibo(){    
-    // Add code here to get the wanted length. 
-    // Hint: check my other codes in javascript_utils.js
-    const fibo_length = "??"
-    
-    // Add code here to compute the fibonacci sequence.
-    // The two first elements are 0 and 1
-    // The next elements are the sum of the two last elements.
-    // You must use arrays
-    // What happens if the input number is negative?
-    // What happens if the input number is 0 or 1?
+function create_fibo() {
+  const n = parseInt(document.getElementById("fibo_length").value);
+  if (isNaN(n) || n < 0) {
+    write_answer_fibo("Please enter a non-negative integer.");
+    return;
+  }
 
+  const seq = [];
+  if (n > 0) seq.push(0);
+  if (n > 1) seq.push(1);
+  for (let i = 2; i < n; i++) {
+    seq.push(seq[i - 1] + seq[i - 2]);
+  }
 
-    write_answer_fibo("Sorry! This function has not yet been modified by the developper. <br>" + 
-    "We will eventually show you a fibonacci sequence of length " + fibo_length)
+  write_answer_fibo(seq.join(", "));
 }
+
 
