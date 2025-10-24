@@ -60,5 +60,32 @@
     </fieldset>
   </form>
   <footer>This website is made for CS203 labs!</footer>
+  <script>
+    function validate(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (name === "") {
+        alert("Please enter your name.");
+        return false;
+      }
+
+      if (email === "") {
+        alert("Please enter your email address.");
+        return false;
+      }
+
+      const birth = document.querySelector('input[name="birth_country"]:checked');
+      if (!birth) {
+        alert("Please select where you were born.");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
 </body>
 </html>
