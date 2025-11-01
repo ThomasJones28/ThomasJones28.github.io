@@ -111,3 +111,27 @@ input[type="submit"] {
   cursor: pointer;
   transition: 0.3s ease;
 }
+
+.slideshow {
+  max-width: 700px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.slideshow_img {
+  display: none;
+}
+
+#prev, #next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+#prev { left: 8px; }
+#next { right: 8px; }
