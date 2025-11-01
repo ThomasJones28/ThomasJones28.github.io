@@ -83,6 +83,30 @@
         return false;
       }
 
+      const provinces = document.querySelectorAll('input[name="province"]:checked');
+      if (provinces.length === 0) {
+        alert("Please select at least one province you have visited.");
+        return false;
+      }
+      
+      const coolest = document.getElementById("coolest_country").value.trim();
+      if (coolest === "") {
+        alert("Please enter the coolest country you have visited.");
+        return false;
+      }
+      
+      const dream = document.getElementById("dream_country").value.trim();
+      if (dream === "") {
+        alert("Please enter the country you would like to visit.");
+        return false;
+      }
+      
+      const cruise = document.querySelector('input[name="cruise"]:checked');
+      if (!cruise) {
+        alert("Please indicate whether you have ever been on a cruise.");
+        return false;
+      }
+
       alert("Form submitted successfully!");
       return true;
     }
