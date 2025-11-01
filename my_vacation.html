@@ -6,15 +6,14 @@
     <title>My Ideal Vacation</title>
     <link rel="stylesheet" href="my_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="nav.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="my_artistic_self.html">My Artistic Self</a>
-        <a href="my_vacation.html" class="current">My Vacation</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="calculators.html">Calculators</a>
-    </nav>
+    <nav id="main-nav"></nav>
+    <script>
+        const current_path = location.pathname;
+        setNav(current_path);
+    </script>
     <div class="body_wrapper">
         <h1>My Trip to Japan</h1>
         <p>The one place I dream about visiting would be <b>Japan!</b>I find the culture fascinating, and I love sushi!

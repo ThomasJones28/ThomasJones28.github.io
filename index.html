@@ -6,15 +6,14 @@
         <title>Thomas</title>
         <link rel="stylesheet" href="my_style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="nav.js"></script>
     </head>
     <body>
-        <nav>
-            <a href="index.html" class="current">Home</a>
-            <a href="my_artistic_self.html">My Artistic Self</a>
-            <a href="my_vacation.html">My Vacation</a>
-            <a href="marketplace.html">Marketplace</a>
-            <a href="calculators.html">Calculators</a>
-        </nav>
+        <nav id="main-nav"></nav>
+        <script>
+          const current_path = location.pathname;
+          setNav(current_path);
+        </script>
         <div class="body_wrapper">
             <h1>Welcome! I'm Thomas.</h1>
             <p>
@@ -30,113 +29,6 @@
                 <li>Program: Business Technology &amp Analytics</li>
                 <li>Graduation Year: 2026</li>
             </ul>
-            <h2>Competitive Sports Career</h2>
-            <table border="1" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Year</th>
-                    <th>Hockey</th>
-                    <th>Lacrosse</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background-color: powderblue;">
-                    <td>2007</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left;">2008</td>
-                    <td style="text-align: center;">Yes</td>
-                    <td style="text-align: right;">Yes</td>
-                </tr>
-                <tr style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                    <td>2009</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2010</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2011</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2012</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2013</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2014</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2015</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2016</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2017</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2018</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2019</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2020</td>
-                    <td>Yes</td>
-                    <td>No...covid</td>
-                </tr>
-                <tr>
-                    <td>2021</td>
-                    <td>Yes...kinda</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2022</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2023</td>
-                    <td>No (retired)</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>2025</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                </tr>
-            </tbody>
-            </table>
         </div>
         <p>
           Here's my GitHub repository: 

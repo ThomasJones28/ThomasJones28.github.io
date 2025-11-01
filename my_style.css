@@ -70,3 +70,44 @@ nav a.current {
 ::-webkit-scrollbar-thumb:hover {
   background: purple; 
 }
+form {
+  width: 50%;
+  margin: 40px auto;
+  background-color: #d4f8d4;
+  border: 2px solid #b08dd9;
+  border-radius: 15px;
+  padding: 25px;
+  color: #6a0dad;
+  font-family: Arial, sans-serif;
+}
+legend {
+  background-color: #b08dd9;
+  color: darkmagenta;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #a26ad8;
+}
+label {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 80%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+input[type="submit"] {
+  background-color: #b08dd9;
+  color: darkmagenta;
+  font-size: 1.1em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
