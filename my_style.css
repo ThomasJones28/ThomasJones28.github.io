@@ -136,3 +136,24 @@ input[type="submit"] {
 
 #prev { left: 8px; }
 #next { right: 8px; }
+
+#todo_app {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+#task_list li {
+  margin: 6px 0;
+  list-style: none;
+  padding: 4px 6px;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#task_list li.done {
+  text-decoration: line-through;
+  color: gray;
+}
