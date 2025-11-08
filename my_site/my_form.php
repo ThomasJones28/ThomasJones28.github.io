@@ -4,14 +4,9 @@
   <meta charset="UTF-8">
   <title>My Form</title>
   <link rel="stylesheet" href="my_style.css">
-  <script src="nav.js"></script>
 </head>
 <body>
-  <nav id="main-nav"></nav>
-  <script>
-    const current_path = location.pathname;
-    setNav(current_path);
-  </script>
+  <?php include_once('nav.php'); ?>
   <form onsubmit="return validate(event)">
     <fieldset>
       <legend>Tell me about your travel life!</legend>
@@ -59,7 +54,7 @@
       <input type="submit" value="Submit">
     </fieldset>
   </form>
-  <footer>This website is made for CS203 labs!</footer>
+  <?php include_once('footer.php'); ?>
   <script>
     function validate(event) {
       event.preventDefault();

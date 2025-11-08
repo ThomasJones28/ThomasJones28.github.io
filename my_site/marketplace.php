@@ -6,19 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace</title>
     <link rel="stylesheet" href="my_style.css">
-    <script src="nav.js"></script>
 </head>
 <body>
-   <nav id="main-nav"></nav>
-   <script>
-     const current_path = location.pathname;
-     setNav(current_path);
-   </script>
-
+  <?php include_once('nav.php'); ?>
     <h1>Marketplace</h1>
     <p>This is the Marketplace page.</p>
     <script src="1-marketplace.js"></script>
-
-    <footer>This website is made for CS203 labs!</footer>
+  <?php include_once('footer.php'); ?>
 </body>
 </html>

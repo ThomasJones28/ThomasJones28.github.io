@@ -6,14 +6,10 @@
     <title>My Ideal Vacation</title>
     <link rel="stylesheet" href="my_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="nav.js"></script>
+
 </head>
 <body>
-    <nav id="main-nav"></nav>
-    <script>
-        const current_path = location.pathname;
-        setNav(current_path);
-    </script>
+    <?php include_once('nav.php'); ?>
     <div class="body_wrapper">
         <h1>My Trip to Japan</h1>
         <p>The one place I dream about visiting would be <b>Japan!</b>I find the culture fascinating, and I love sushi!
@@ -23,6 +19,6 @@
         width="600"
         style="border: 8px solid indigo; border-radius:16px;">
     </div>
-    <footer>This website is made for CSL203!</footer>
+    <?php include_once('footer.php'); ?>
 </body>
 </html>
