@@ -7,7 +7,7 @@
 </head>
 <body>
   <?php include_once('nav.php'); ?>
-  <form onsubmit="return validate(event)">
+  <form action="quiz_verification.php" method="get" onsubmit="return validate();">
     <fieldset>
       <legend>Tell me about your travel life!</legend>
 
@@ -24,20 +24,20 @@
       <label><input type="radio" name="birth_country" value="Other"> Other</label><br><br>
 
       <p>2. What provinces have you visited?</p>
-      <label><input type="checkbox" name="province" value="Alberta"> Alberta</label><br>
-      <label><input type="checkbox" name="province" value="British Columbia"> British Columbia</label><br>
-      <label><input type="checkbox" name="province" value="Manitoba"> Manitoba</label><br>
-      <label><input type="checkbox" name="province" value="New Brunswick"> New Brunswick</label><br>
-      <label><input type="checkbox" name="province" value="Newfoundland and Labrador"> Newfoundland and Labrador</label><br>
-      <label><input type="checkbox" name="province" value="Nova Scotia"> Nova Scotia</label><br>
-      <label><input type="checkbox" name="province" value="Ontario"> Ontario</label><br>
-      <label><input type="checkbox" name="province" value="Prince Edward Island"> Prince Edward Island</label><br>
-      <label><input type="checkbox" name="province" value="Quebec"> Quebec</label><br>
-      <label><input type="checkbox" name="province" value="Saskatchewan"> Saskatchewan</label><br>
-      <label><input type="checkbox" name="province" value="Northwest Territories"> Northwest Territories</label><br>
-      <label><input type="checkbox" name="province" value="Nunavut"> Nunavut</label><br>
-      <label><input type="checkbox" name="province" value="Yukon"> Yukon</label><br>
-      <label><input type="checkbox" name="province" value="None"> None</label><br><br>
+      <label><input type="checkbox" name="province[]" value="Alberta"> Alberta</label><br>
+      <label><input type="checkbox" name="province[]" value="British Columbia"> British Columbia</label><br>
+      <label><input type="checkbox" name="province[]" value="Manitoba"> Manitoba</label><br>
+      <label><input type="checkbox" name="province[]" value="New Brunswick"> New Brunswick</label><br>
+      <label><input type="checkbox" name="province[]" value="Newfoundland and Labrador"> Newfoundland and Labrador</label><br>
+      <label><input type="checkbox" name="province[]" value="Nova Scotia"> Nova Scotia</label><br>
+      <label><input type="checkbox" name="province[]" value="Ontario"> Ontario</label><br>
+      <label><input type="checkbox" name="province[]" value="Prince Edward Island"> Prince Edward Island</label><br>
+      <label><input type="checkbox" name="province[]" value="Quebec"> Quebec</label><br>
+      <label><input type="checkbox" name="province[]" value="Saskatchewan"> Saskatchewan</label><br>
+      <label><input type="checkbox" name="province[]" value="Northwest Territories"> Northwest Territories</label><br>
+      <label><input type="checkbox" name="province[]" value="Nunavut"> Nunavut</label><br>
+      <label><input type="checkbox" name="province[]" value="Yukon"> Yukon</label><br>
+      <label><input type="checkbox" name="province[]" value="None"> None</label><br><br>
 
       <p>3. What is the coolest country you have visited?</p>
       <label for="coolest_country">Answer:</label>
@@ -56,55 +56,51 @@
   </form>
   <?php include_once('footer.php'); ?>
   <script>
-    function validate(event) {
-      event.preventDefault();
+  function validate() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-
-      if (name === "") {
-        alert("Please enter your name.");
-        return false;
-      }
-
-      if (email === "") {
-        alert("Please enter your email address.");
-        return false;
-      }
-
-      const birth = document.querySelector('input[name="birth_country"]:checked');
-      if (!birth) {
-        alert("Please select where you were born.");
-        return false;
-      }
-
-      const provinces = document.querySelectorAll('input[name="province"]:checked');
-      if (provinces.length === 0) {
-        alert("Please select at least one province you have visited.");
-        return false;
-      }
-      
-      const coolest = document.getElementById("coolest_country").value.trim();
-      if (coolest === "") {
-        alert("Please enter the coolest country you have visited.");
-        return false;
-      }
-      
-      const dream = document.getElementById("dream_country").value.trim();
-      if (dream === "") {
-        alert("Please enter the country you would like to visit.");
-        return false;
-      }
-      
-      const cruise = document.querySelector('input[name="cruise"]:checked');
-      if (!cruise) {
-        alert("Please indicate whether you have ever been on a cruise.");
-        return false;
-      }
-
-      alert("Form submitted successfully!");
-      return true;
+    if (name === "") {
+      alert("Please enter your name.");
+      return false;
     }
-  </script>
+
+    if (email === "") {
+      alert("Please enter your email address.");
+      return false;
+    }
+
+    const birth = document.querySelector('input[name="birth_country"]:checked');
+    if (!birth) {
+      alert("Please select where you were born.");
+      return false;
+    }
+
+    const provinces = document.querySelectorAll('input[name="province[]"]:checked');
+    if (provinces.length === 0) {
+      alert("Please select at least one province you have visited.");
+      return false;
+    }
+
+    const coolest = document.getElementById("coolest_country").value.trim();
+    if (coolest === "") {
+      alert("Please enter the coolest country you have visited.");
+      return false;
+    }
+
+    const dream = document.getElementById("dream_country").value.trim();
+    if (dream === "") {
+      alert("Please enter the country you would like to visit.");
+      return false;
+    }
+
+    const cruise = document.querySelector('input[name="cruise"]:checked');
+    if (!cruise) {
+      alert("Please indicate whether you have ever been on a cruise.");
+      return false;
+    }
+    return true;
+  }
+</script>
 </body>
 </html>

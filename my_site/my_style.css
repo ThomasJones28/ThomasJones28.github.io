@@ -207,3 +207,55 @@ input[type="submit"] {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.error-box {
+  border: 1px solid red;
+  padding: 10px;
+  background-color: #ffe6e6;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.quiz-results article {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #fff;
+}
+
+.highlight-result {
+  border-color: #6a0dad;
+  background-color: #f5e9ff;
+}
+.quiz-results {
+  width: 70%;
+  margin: 30px auto;
+}
+
+.result-card {
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+}
+
+.result-card h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-badge {
+  background-color: #3b7a2a;
+  color: white;
+  font-size: 0.8em;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.highlight-result {
+  border-color: #3b7a2a;
+  background-color: #e7f6e4;
+}
