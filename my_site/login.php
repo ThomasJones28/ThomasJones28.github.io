@@ -1,10 +1,14 @@
 <?php
 $error = '';
 
+$correct_hash = 'b14e9015dae06b5e206c2b37178eac45e193792c5ccf1d48974552614c61f2ff';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    if ($password === 'CS203') {
+    $password_hash = hash('sha256', $password);
+
+    if ($password_hash === $correct_hash) {
         header('Location: my_todo.php');
         exit();
     } else {
@@ -12,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
