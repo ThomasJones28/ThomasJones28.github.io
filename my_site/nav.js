@@ -12,10 +12,10 @@ function setNav(current_path) {
       for (const link of navElem.querySelectorAll("a")) {
         const href_clean = splitAtRoot(link.href);
         const isHome =
-          (current_path === "/" && href_clean.endsWith("/index.html")) ||
-          (href_clean === current_path);
-
-        if (isHome) link.classList.add("current"); // use your site’s .current class
+          (current_path === "/" && (href_clean.endsWith("/index.php") || href_clean.endsWith("/")))
+          (href_clean === current_path)||
+          (href_clean.endsWith("/index.html") && current_path.endsWith("/index.php"));
+        if (isHome) link.classList.add("current"); 
       }
     })
     .catch(err => console.log("nav load error:", err));
