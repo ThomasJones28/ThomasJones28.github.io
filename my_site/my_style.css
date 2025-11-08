@@ -157,3 +157,53 @@ input[type="submit"] {
   text-decoration: line-through;
   color: gray;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dropbtn {
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: white;
+  cursor: pointer;
+  padding: 0px 20px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+.dropbtn:hover {
+  color: yellow;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 6px;
+  padding: 4px;
+  min-width: 180px;
+  z-index: 5;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: white;
+  background-color: green;
+  border-radius: 4px;
+}
+
+.dropdown-content a:hover {
+  background-color: green;
+  color: yellow;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
