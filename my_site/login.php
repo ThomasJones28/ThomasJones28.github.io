@@ -7,6 +7,17 @@ $error = '';
 $logout_message = '';
 $username = '';
 
+$file = 'login_attempts.json';
+$attempts = [];
+
+if (file_exists($file)) {
+    $json_data = file_get_contents($file);
+    $attempts = json_decode($json_data, true);
+    if (!is_array($attempts)) {
+        $attempts = [];
+    }
+}
+
 if (isset($_POST['logout'])) {
     session_destroy();
     session_start();
@@ -28,15 +39,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    $password_hash = hash('sha256', $password);
+    $user = $username;
 
-    if ($password_hash === $correct_hash && $username !== '') {
-        setcookie('todo-username', $username, time() + 60 * 60 * 24 * 30);
-        
-        $_SESSION['is_logged_in'] = true;
+    if ($user !== '') {
+        if (!isset($attempts[$user])) {
+            $attempts[$user] = [
+                'attempts' => 0,
+                'locked_until' => 0
+            ];
+        }
 
-        header('Location: my_todo.php');
-        exit();
+        if ($attempts[$user]['locked_until'] > time()) {
+            $error = 'Too many wrong attempts. Please wait 30 seconds before trying again.';
+        } else {
+            $password_hash = hash('sha256', $password);
+
+            if ($password_hash === $correct_hash && $username !== '') {
+                $attempts[$user]['attempts'] = 0;
+                $attempts[$user]['locked_until'] = 0;
+                file_put_contents($file, json_encode($attempts));
+
+                setcookie('todo-username', $username, time() + 60 * 60 * 24 * 30);
+                $_SESSION['is_logged_in'] = true;
+
+                header('Location: my_todo.php');
+                exit();
+            } else {
+                $attempts[$user]['attempts'] += 1;
+
+                if ($attempts[$user]['attempts'] >= 3) {
+                    $attempts[$user]['locked_until'] = time() + 30;
+                    $attempts[$user]['attempts'] = 0;
+                    $error = 'Too many wrong attempts. Please wait 30 seconds before trying again.';
+                } else {
+                    $error = 'Incorrect username or password. Please try again.';
+                }
+
+                file_put_contents($file, json_encode($attempts));
+            }
+        }
     } else {
         $error = 'Incorrect username or password. Please try again.';
     }
