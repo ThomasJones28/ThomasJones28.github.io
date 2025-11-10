@@ -8,7 +8,20 @@
 <body>
   <?php include_once('nav.php'); ?>
 
-  <h2>My To-Do List</h2>
+  <?php
+    $username = '';
+    if (isset($_COOKIE['todo-username'])) {
+        $username = $_COOKIE['todo-username'];
+    }
+  ?>
+
+  <h2>
+    <?php if ($username !== ''): ?>
+      <?php echo htmlspecialchars($username); ?>'s To-Do List
+    <?php else: ?>
+      My To-Do List
+    <?php endif; ?>
+  </h2>
 
   <div id="todo_app">
     <input type="text" id="new_task" placeholder="Add a new task">
