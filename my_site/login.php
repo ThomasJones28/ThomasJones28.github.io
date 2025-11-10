@@ -1,4 +1,5 @@
 <?php
+// MODEL Section: login logic
 $error = '';
 
 $correct_hash = 'b14e9015dae06b5e206c2b37178eac45e193792c5ccf1d48974552614c61f2ff';
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<!-- VIEW Section: html + simple PHP -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
