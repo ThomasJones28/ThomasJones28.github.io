@@ -1,3 +1,12 @@
+<?php
+require_once 'config.php';
+session_start();
+
+if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+    header('Location: login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +16,10 @@
 </head>
 <body>
   <?php include_once('nav.php'); ?>
+
+  <form action="login.php" method="post" class="logout-form">
+    <button type="submit" name="logout" value="1" class="logout-button">Log out</button>
+  </form>
 
   <?php
     $username = '';
