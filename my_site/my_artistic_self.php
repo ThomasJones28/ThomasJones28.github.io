@@ -31,14 +31,9 @@
     }
   </style>
   <link rel="stylesheet" href="my_style.css">
-  <script src="nav.js"></script>
 </head>
 <body>
-  <nav id="main-nav"></nav>
-  <script>
-    const current_path = location.pathname;
-    setNav(current_path);
-  </script>
+  <?php include_once('nav.php'); ?>
   <div class="body_wrapper">
     <h1>My Artistic Self</h1>
     <p id="k1" class="keyword">Gaiter</p>
@@ -48,6 +43,6 @@
     <p id="k5" class="keyword">Lennoxville</p>
     <div class="blurb">This image of a purple Alligator and the keywords I added is to represent the beloved Bishop's University!</div>
   </div> 
-  <footer>This website is made for CSL203!</footer>
+  <?php include_once('footer.php'); ?>
 </body>
 </html>

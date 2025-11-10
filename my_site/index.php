@@ -6,14 +6,9 @@
         <title>Thomas</title>
         <link rel="stylesheet" href="my_style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="nav.js"></script>
     </head>
     <body>
-        <nav id="main-nav"></nav>
-        <script>
-          const current_path = location.pathname;
-          setNav(current_path);
-        </script>
+      <?php include_once('nav.php'); ?>
         <div class="body_wrapper">
             <h1>Welcome! I'm Thomas.</h1>
             <p>
@@ -41,10 +36,7 @@
         <p>
           Here's my GitHub repository: 
           <a href="https://github.com/ThomasJones28/ThomasJones28.github.io">View my repo</a>
-        </p>
-        
-        <footer>This website is made for CSL203!</footer>
-        
+        </p>        
         <script>
           let current_slide = 0;
           showSlide(current_slide);
@@ -71,5 +63,6 @@
             showSlide(current_slide);
           }
         </script>
+      <?php include_once('footer.php'); ?>
     </body>
 </html>

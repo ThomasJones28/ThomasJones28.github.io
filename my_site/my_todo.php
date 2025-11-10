@@ -4,14 +4,9 @@
   <meta charset="UTF-8">
   <title>My To-Do List</title>
   <link rel="stylesheet" href="my_style.css">
-  <script src="nav.js"></script>
 </head>
 <body>
-  <nav id="main-nav"></nav>
-  <script>
-    const current_path = location.pathname;
-    setNav(current_path);
-  </script>
+  <?php include_once('nav.php'); ?>
 
   <h2>My To-Do List</h2>
 
@@ -20,9 +15,7 @@
     <button onclick="addTask()">Add</button>
     <ul id="task_list"></ul>
   </div>
-
-  <footer>This website is made for CSL203!</footer>
-
+  <?php include_once('footer.php'); ?>
   <script src="todo.js"></script>
 </body>
 </html>

@@ -8,23 +8,15 @@
     <link rel="stylesheet" href="my_style.css">
     <script src="2-calculator.js"></script>
     <script src="2-calculator_utils.js"></script>
-    <script src="nav.js"></script>
 </head>
 <body>
-    <nav id="main-nav"></nav>
-    <script>
-      const current_path = location.pathname;
-      setNav(current_path);
-    </script>
-    
+    <?php include_once('nav.php'); ?>
     <h1> Some calculators! </h1>
 
         
-        <!-- Main calculator section -->
         <div class="calculator_div">
         
         
-            <!-- Calcultor 1: your age in terms of days -->
             <fieldset>
                 <legend> How old are you in terms of days? </legend>
                 <div>
@@ -41,7 +33,6 @@
             </fieldset>
             
             
-            <!-- Calcultor 2: your age in terms of days -->
             <fieldset class="right">
                 <legend> The radius and area of the biggest circle fitting in your screen </legend>
                 <div>
@@ -54,7 +45,6 @@
             </fieldset>
             
             
-            <!-- Calcultor 3: Palindrome checker -->
             <fieldset>
                 <legend> Palindrome checker </legend>
                 <div>
@@ -70,7 +60,6 @@
             </fieldset>
             
             
-            <!-- Calcultor 4: Fibonnacci -->
             <fieldset class="right">
                 <legend> Fibonacci </legend>
                 <div>
@@ -89,6 +78,6 @@
                 
         </div>
 
-    <footer>This website is made for CS203 labs!</footer>
+    <?php include_once('footer.php'); ?>
 </body>
 </html>

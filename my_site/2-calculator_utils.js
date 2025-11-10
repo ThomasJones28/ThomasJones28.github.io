@@ -1,6 +1,5 @@
 
 
-// ------------- YOUR AGE IN DAYS
 
 function write_answer_days(text_msg){
     let my_p = document.getElementById("p_answer_days");
@@ -15,7 +14,6 @@ function get_dob(){
 
 
 
-// -------------CIRCLE
 function write_answer_circle(text_msg){
     let my_p = document.getElementById("p_answer_circle");
     my_p.innerHTML = text_msg
@@ -28,7 +26,6 @@ function get_screen_dims(){
 
 
 
-// ------------- PALINDROME
 function write_answer_palindrome(text_msg){
     let my_p = document.getElementById("p_answer_palindrome");
     my_p.innerHTML = text_msg
@@ -42,7 +39,6 @@ function get_palindrome(){
 
 
 
-// ------------- FIBONACCI
 function write_answer_fibo(text_msg){
     let my_p = document.getElementById("p_answer_fibo");
     my_p.innerHTML = text_msg
