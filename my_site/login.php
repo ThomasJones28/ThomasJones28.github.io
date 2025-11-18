@@ -1,22 +1,89 @@
 <?php
+// MODEL Section: login logic
+require_once 'config.php';
+session_start();
+
 $error = '';
+$logout_message = '';
+$username = '';
+
+$file = 'login_attempts.json';
+$attempts = [];
+
+if (file_exists($file)) {
+    $json_data = file_get_contents($file);
+    $attempts = json_decode($json_data, true);
+    if (!is_array($attempts)) {
+        $attempts = [];
+    }
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    session_start();
+    $logout_message = 'Successfully logged out!';
+}
+
+if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && !isset($_POST['logout'])) {
+    header('Location: my_todo.php');
+    exit();
+}
+
+if (isset($_COOKIE['todo-username'])) {
+    $username = $_COOKIE['todo-username'];
+}
 
 $correct_hash = 'b14e9015dae06b5e206c2b37178eac45e193792c5ccf1d48974552614c61f2ff';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
+    $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    $password_hash = hash('sha256', $password);
+    $user = $username;
 
-    if ($password_hash === $correct_hash) {
-        header('Location: my_todo.php');
-        exit();
+    if ($user !== '') {
+        if (!isset($attempts[$user])) {
+            $attempts[$user] = [
+                'attempts' => 0,
+                'locked_until' => 0
+            ];
+        }
+
+        if ($attempts[$user]['locked_until'] > time()) {
+            $error = 'Too many wrong attempts. Please wait 30 seconds before trying again.';
+        } else {
+            $password_hash = hash('sha256', $password);
+
+            if ($password_hash === $correct_hash && $username !== '') {
+                $attempts[$user]['attempts'] = 0;
+                $attempts[$user]['locked_until'] = 0;
+                file_put_contents($file, json_encode($attempts));
+
+                setcookie('todo-username', $username, time() + 60 * 60 * 24 * 30);
+                $_SESSION['is_logged_in'] = true;
+
+                header('Location: my_todo.php');
+                exit();
+            } else {
+                $attempts[$user]['attempts'] += 1;
+
+                if ($attempts[$user]['attempts'] >= 3) {
+                    $attempts[$user]['locked_until'] = time() + 30;
+                    $attempts[$user]['attempts'] = 0;
+                    $error = 'Too many wrong attempts. Please wait 30 seconds before trying again.';
+                } else {
+                    $error = 'Incorrect username or password. Please try again.';
+                }
+
+                file_put_contents($file, json_encode($attempts));
+            }
+        }
     } else {
-        $error = 'Incorrect password. Please try again.';
+        $error = 'Incorrect username or password. Please try again.';
     }
 }
 ?>
-
+<!-- VIEW Section: html + simple PHP -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +103,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($error !== ''): ?>
             <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
+        <?php if ($logout_message !== ''): ?>
+            <p style="color: green;"><?php echo htmlspecialchars($logout_message); ?></p>
+        <?php endif; ?>
 
         <form action="login.php" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" required><br><br>
+            
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
+            <input type="password" id="password" name="password" required><br><br>
+            
             <input type="submit" value="Login">
         </form>
     </div>
