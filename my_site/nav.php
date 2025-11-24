@@ -10,5 +10,6 @@
   <a href="marketplace.php">Marketplace</a>
   <a href="calculators.php">Calculators</a>
   <a href="my_form.php">My Form</a>
+  <a href="blog.php">Blog</a>
   <a href="login.php">My To-Do</a>
 </nav>
