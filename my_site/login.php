@@ -50,7 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
         }
 
         if ($attempts[$user]['locked_until'] > time()) {
-            $error = 'Too many wrong attempts. Please wait 30 seconds before trying again.';
+            $seconds_left = $attempts[$user]['locked_until'] - time();
+            if ($seconds_left < 0) {
+                $seconds_left = 0;
+            }
+
+            $error = 'You are still locked out, sorry. Time Left: ' . $seconds_left . ' seconds.';
         } else {
             $password_hash = hash('sha256', $password);
 
