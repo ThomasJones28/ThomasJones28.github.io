@@ -29,6 +29,9 @@ html, body {
     box-sizing: border-box;
     height: 100%;
 }
+html {
+  scroll-behavior: smooth;
+}
 footer {
     background: gray;
     color: white;
@@ -273,4 +276,19 @@ input[type="submit"] {
   position: absolute;
   top: 0;
   right: 0;
+}
+.blog-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.blog-layout main {
+  flex: 3;
+}
+
+.blog-layout aside {
+  flex: 1;
+  background-color: plum;
+  padding: 10px;
 }
