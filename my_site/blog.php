@@ -1,5 +1,9 @@
 <?php
 //Model section
+//See if user is logged in
+require_once 'config.php';
+session_start();
+
 //Loads blog posts from JSON file
 //Useful for changing content without changing HTML structure
 $blog_file = 'blog.json';
@@ -24,6 +28,18 @@ if (file_exists($blog_file)) {
 </head>
 <body>
     <?php include_once('nav.php'); ?>
+    <div class="blog-login">
+        <?php if (!empty($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
+            <!-- Log out button for logged in users -->
+            <form action="login.php" method="post" style="display: inline;">
+                <input type="hidden" name="logout" value="1">
+                <button type="submit">Log out</button>
+            </form>
+        <?php else: ?>
+            <!-- Link to login page for users not logged in-->
+            <a href="login.php?redirect=blog.php">Login</a>
+        <?php endif; ?>
+    </div>
     <section class="hero">
         <h1>My University Journey</h1>
         <p>This blog covers my 4 year journey as a student-athelete at Bishop's University. It will cover key events in my academic, athletic, and personal lives and how these events played a roll into shaping where I am currently at today.</p>

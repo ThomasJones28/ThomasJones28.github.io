@@ -6,6 +6,15 @@ session_start();
 $error = '';
 $logout_message = '';
 $username = '';
+//Send user back to blog if thats where they came from, otherwise sends to to-do list
+$redirect = 'my_todo.php';
+
+if (isset($_GET['redirect']) && $_GET['redirect'] === 'blog.php') {
+    $redirect = 'blog.php';
+}
+if (isset($_POST['redirect']) && $_POST['redirect'] === 'blog.php') {
+    $redirect = 'blog.php';
+}
 
 $file = 'login_attempts.json';
 $attempts = [];
@@ -25,7 +34,7 @@ if (isset($_POST['logout'])) {
 }
 
 if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true && !isset($_POST['logout'])) {
-    header('Location: my_todo.php');
+    header('Location: ' . $redirect);
     exit();
 }
 
@@ -66,8 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
 
                 setcookie('todo-username', $username, time() + 60 * 60 * 24 * 30);
                 $_SESSION['is_logged_in'] = true;
-
-                header('Location: my_todo.php');
+                header('Location: ' . $redirect);
                 exit();
             } else {
                 $attempts[$user]['attempts'] += 1;
@@ -113,6 +121,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
         <?php endif; ?>
 
         <form action="login.php" method="post">
+            <input type="hidden" name="redirect" value="<?php
+            //keeps redirect info on form submission
+                echo isset($_GET['redirect']) && $_GET['redirect'] === 'blog.php'
+                    ? 'blog.php'
+                    : 'my_todo.php';
+                ?>">
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" required><br><br>
             
