@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['logout'])) {
             <p style="color: green;"><?php echo htmlspecialchars($logout_message); ?></p>
         <?php endif; ?>
 
-        <form action="login.php" method="post">
+        <form class="quiz-form" action="login.php" method="post">
             <input type="hidden" name="redirect" value="<?php
             //keeps redirect info on form submission
                 echo isset($_GET['redirect']) && $_GET['redirect'] === 'blog.php'

@@ -7,7 +7,7 @@
 </head>
 <body>
   <?php include_once('nav.php'); ?>
-  <form action="quiz_verification.php" method="get" onsubmit="return validate();">
+  <form class="quiz-form" action="quiz_verification.php" method="get" onsubmit="return validate();">
     <fieldset>
       <legend>Tell me about your travel life!</legend>
 
