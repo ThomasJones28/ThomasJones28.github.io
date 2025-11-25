@@ -4,6 +4,8 @@
 require_once 'config.php';
 session_start();
 
+$is_logged_in = !empty($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true;
+
 //Loads blog posts from JSON file
 //Useful for changing content without changing HTML structure
 $blog_file = 'blog.json';
@@ -61,7 +63,9 @@ if (file_exists($blog_file)) {
 <body>
     <?php include_once('nav.php'); ?>
     <div class="blog-login">
-        <?php if (!empty($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
+        <?php if ($is_logged_in): ?>
+            <!--Link to add new post when logged in-->
+            <a href="add_post.php">Add New Post</a>
             <!-- Log out button for logged in users -->
             <form action="login.php" method="post" style="display: inline;">
                 <input type="hidden" name="logout" value="1">
