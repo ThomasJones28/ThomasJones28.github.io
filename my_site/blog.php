@@ -94,10 +94,25 @@ if (file_exists($blog_file)) {
                 <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                 <p><i><?php echo htmlspecialchars($post['date']); ?></i></p>
 
-                <?php if (!empty($post['paragraphs']) && is_array($post['paragraphs'])): ?>
-                    <?php foreach ($post['paragraphs'] as $para): ?>
-                        <p><?php echo htmlspecialchars($para); ?></p>
-                    <?php endforeach; ?>
+                <?php 
+                if (!empty($post['paragraphs']) && is_array($post['paragraphs'])):
+                    $paragraphs = $post['paragraphs'];
+                    $para_count = count($paragraphs);
+                endif;
+                ?>
+                <!--Show first paragraph-->
+                <?php if (!empty($paragraphs)): ?>
+                    <p><?php echo htmlspecialchars($paragraphs[0]); ?></p>
+
+                    <!--Hide all but first paragraph-->
+                    <?php if ($para_count > 1): ?>
+                        <div class="extra-content">
+                            <?php for ($i = 1; $i < $para_count; $i++): ?>
+                                <p><?php echo htmlspecialchars($paragraphs[$i]); ?></p>
+                            <?php endfor; ?>
+                        </div>
+                        <button type="button" class="toggle-post">Show more</button>
+                    <?php endif; ?>
                 <?php endif; ?>
 
                 <?php if (!empty($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>

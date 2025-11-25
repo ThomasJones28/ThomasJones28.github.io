@@ -9,4 +9,29 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Allow extra paragraphs to be toggled
+    const toggleButtons = document.querySelectorAll('.toggle-post');
+
+    toggleButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // Extra content is the element right before the button
+            const article = button.closest('article');
+            if (!article) return;
+
+            const extra = article.querySelector('.extra-content');
+            if (!extra) return;
+
+            // Toggle button text to match 
+            const isHidden = extra.style.display === '' || extra.style.display === 'none';
+
+            if (isHidden) {
+                extra.style.display = 'block';
+                button.textContent = 'Show less';
+            } else {
+                extra.style.display = 'none';
+                button.textContent = 'Show more';
+            }
+        });
+    });
 });
