@@ -333,3 +333,14 @@ input[type="submit"] {
   font-weight: bold;
   margin: 10px 20px;
 }
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a,
+  nav .dropbtn {
+    padding: 6px 0;
+  }
+}
