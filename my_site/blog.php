@@ -128,6 +128,11 @@ if (file_exists($blog_file)) {
         <aside>
             <!-- Aside section for quick links to blog posts -->
             <h3>Posts</h3>
+            <!--Search box-->
+            <div class="search-box">
+                <label for="post-search">Search Posts by keyword:</label><br>
+                <input type="text" id="post-search" name="post-search" placeholder="Type to search...">
+            </div>
             <!--Buttons to filter by school year-->
             <div class="filters">
                 <button type="button" class="filter-btn" data-filter="all">All</button>

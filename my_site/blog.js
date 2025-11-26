@@ -101,4 +101,34 @@ document.addEventListener('DOMContentLoaded', function () {
             postsArray.forEach(post => mainContainer.appendChild(post));
         });
     });
+
+    // Search posts by title and paragraphtext
+    const searchInput = document.getElementById('post-search');
+    const articles = document.querySelectorAll('main article');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const term = searchInput.value.toLowerCase().trim();
+
+            articles.forEach(function (article) {
+                // Grab title text
+                const title = article.querySelector('h2') ?
+                    article.querySelector('h2').textContent.toLowerCase() : '';
+
+                // Grab paragraph text
+                const paragraphs = Array.from(article.querySelectorAll('p'))
+                    .map(p => p.textContent.toLowerCase())
+                    .join(' ');
+
+                const haystack = title + ' ' + paragraphs;
+                //Show if term appears, hide if it doesnt
+
+                if (term === '' || haystack.includes(term)) {
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    }
 });
