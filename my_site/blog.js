@@ -54,4 +54,51 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
+    // Sort posts by title and date (A/D)- Sort Suggestion #2
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    const mainContainer = document.querySelector('main');
+
+    sortButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const sortType = btn.getAttribute('data-sort');
+
+            // Convert from nodelist to array
+            let postsArray = Array.from(mainContainer.querySelectorAll('article'));
+
+            // Sorting Logic
+            if (sortType === 'title-asc') {
+                postsArray.sort((a, b) =>
+                    a.querySelector('h2').textContent.localeCompare(
+                        b.querySelector('h2').textContent
+                    )
+                );
+            }
+
+            else if (sortType === 'title-desc') {
+                postsArray.sort((a, b) =>
+                    b.querySelector('h2').textContent.localeCompare(
+                        a.querySelector('h2').textContent
+                    )
+                );
+            }
+
+            else if (sortType === 'date-asc') {
+                postsArray.sort((a, b) =>
+                    new Date(a.querySelector('i').textContent) -
+                    new Date(b.querySelector('i').textContent)
+                );
+            }
+
+            else if (sortType === 'date-desc') {
+                postsArray.sort((a, b) =>
+                    new Date(b.querySelector('i').textContent) -
+                    new Date(a.querySelector('i').textContent)
+                );
+            }
+
+            // Re-insert posts in the new order
+            postsArray.forEach(post => mainContainer.appendChild(post));
+        });
+    });
 });

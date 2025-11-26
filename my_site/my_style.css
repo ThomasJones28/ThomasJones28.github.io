@@ -374,3 +374,23 @@ input[type="submit"] {
 .filter-btn:hover {
   background-color: darkgray;
 }
+.sorting {
+  margin-bottom: 10px;
+}
+.sorting h4 {
+  margin: 6px 0;
+}
+.sort-btn {
+  background-color: gray;
+  color: black;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.sort-btn:hover {
+  background-color: darkgray;
+}

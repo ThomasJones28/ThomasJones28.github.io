@@ -135,6 +135,14 @@ if (file_exists($blog_file)) {
                 <button type="button" class="filter-btn" data-filter="second">Second Year</button>
                 <button type="button" class="filter-btn" data-filter="third">Third Year</button>
             </div>
+            <!--Buttons to sort by date (A/D) and title (A/D)-->
+            <div class="sorting">
+                <h4>Sort</h4>
+                <button type="button" class="sort-btn" data-sort="title-asc">Title A -> Z</button>
+                <button type="button" class="sort-btn" data-sort="title-desc">Title Z -> A</button>
+                <button type="button" class="sort-btn" data-sort="date-asc">Date (Oldest)</button>
+                <button type="button" class="sort-btn" data-sort="date-desc">Date (Newest)</button>
+            </div>
             <ul>
                 <?php foreach ($posts as $post): ?>
                     <li>
