@@ -131,4 +131,73 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+    // Pagination posts per page, and move to next/prev page 
+    const perPageSelect = document.getElementById('posts-per-page');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const pageInfo = document.getElementById('page-info');
+
+    const articlesForPagination = Array.from(document.querySelectorAll('main article'));
+
+    let currentPage = 1;
+    let itemsPerPage = 'all';
+
+    function renderPage() {
+        if (itemsPerPage === 'all') {
+            // Show all posts, hide page info and button toggle state
+            articlesForPagination.forEach(article => {
+                article.style.display = '';
+            });
+            if (pageInfo) {
+                pageInfo.textContent = 'Showing all posts';
+            }
+            return;
+        }
+
+        const perPage = parseInt(itemsPerPage, 10);
+        const totalItems = articlesForPagination.length;
+        const totalPages = Math.ceil(totalItems / perPage);
+
+        // Set currentPage min/max
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIndex = (currentPage - 1) * perPage;
+        const endIndex = startIndex + perPage;
+
+        articlesForPagination.forEach((article, index) => {
+            if (index >= startIndex && index < endIndex) {
+                article.style.display = '';
+            } else {
+                article.style.display = 'none';
+            }
+        });
+
+        if (pageInfo) {
+            pageInfo.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+        }
+    }
+
+    if (perPageSelect && prevPageBtn && nextPageBtn) {
+        // If User changes numberof posts per page
+        perPageSelect.addEventListener('change', function () {
+            itemsPerPage = perPageSelect.value;
+            currentPage = 1;
+            renderPage();
+        });
+
+        // Previous page button
+        prevPageBtn.addEventListener('click', function () {
+            if (itemsPerPage === 'all') return;
+            currentPage -= 1;
+            renderPage();
+        });
+
+        // Next page button
+        nextPageBtn.addEventListener('click', function () {
+            if (itemsPerPage === 'all') return;
+            currentPage += 1;
+            renderPage();
+        });
+    }
 });

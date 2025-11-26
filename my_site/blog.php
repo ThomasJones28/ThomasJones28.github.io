@@ -148,6 +148,20 @@ if (file_exists($blog_file)) {
                 <button type="button" class="sort-btn" data-sort="date-asc">Date (Oldest)</button>
                 <button type="button" class="sort-btn" data-sort="date-desc">Date (Newest)</button>
             </div>
+            <!--Pagination controls-->
+            <div class="pagination-controls">
+                <h4>Posts per page</h4>
+                <select id="posts-per-page">
+                    <option value="all">All</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <div class="page-buttons">
+                    <button type="button" id="prev-page">Previous</button>
+                    <button type="button" id="next-page">Next</button>
+                </div>
+                <p id="page-info"></p>
+            </div>
             <ul>
                 <?php foreach ($posts as $post): ?>
                     <li>
