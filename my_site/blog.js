@@ -34,4 +34,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Filter by school year
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const allPosts = document.querySelectorAll('article');
+
+    filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const filter = btn.getAttribute('data-filter'); // first, second, third, or all
+
+            allPosts.forEach(function (post) {
+                if (filter === 'all') {
+                    post.style.display = '';
+                } else if (post.id.includes(filter)) {
+                    post.style.display = '';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+    });
 });

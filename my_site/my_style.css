@@ -357,3 +357,20 @@ input[type="submit"] {
   font-size: 0.85em;
   margin-top: 4px;
 }
+.filters {
+  margin-bottom: 10px;
+}
+.filter-btn {
+  background-color: gray;
+  color: #6a0dad;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.filter-btn:hover {
+  background-color: darkgray;
+}

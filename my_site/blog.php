@@ -128,6 +128,13 @@ if (file_exists($blog_file)) {
         <aside>
             <!-- Aside section for quick links to blog posts -->
             <h3>Posts</h3>
+            <!--Buttons to filter by school year-->
+            <div class="filters">
+                <button type="button" class="filter-btn" data-filter="all">All</button>
+                <button type="button" class="filter-btn" data-filter="first">First Year</button>
+                <button type="button" class="filter-btn" data-filter="second">Second Year</button>
+                <button type="button" class="filter-btn" data-filter="third">Third Year</button>
+            </div>
             <ul>
                 <?php foreach ($posts as $post): ?>
                     <li>
