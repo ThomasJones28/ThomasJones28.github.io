@@ -29,6 +29,9 @@ html, body {
     box-sizing: border-box;
     height: 100%;
 }
+html {
+  scroll-behavior: smooth;
+}
 footer {
     background: gray;
     color: white;
@@ -71,7 +74,7 @@ nav a.current {
 ::-webkit-scrollbar-thumb:hover {
   background: purple; 
 }
-form {
+form.quiz-form {
   width: 50%;
   margin: 40px auto;
   background-color: #d4f8d4;
@@ -273,4 +276,167 @@ input[type="submit"] {
   position: absolute;
   top: 0;
   right: 0;
+}
+.blog-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.blog-layout main {
+  flex: 3;
+}
+
+.blog-layout aside {
+  flex: 1;
+  background-color: plum;
+  padding: 10px;
+  position: sticky;
+  top: 20px;
+  height: max-content
+}
+.blog-login {
+  text-align: right;
+  margin: 10px 20px 0 20px;
+}
+
+.blog-login a,
+.blog-login button {
+  background-color: #b08dd9;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.blog-login a {
+  text-decoration: none;
+  display: inline-block;
+}
+.delete-post-form {
+  margin-top: 6px;
+}
+
+.delete-button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.blog-message {
+  color: darkred;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a,
+  nav .dropbtn {
+    padding: 6px 0;
+  }
+}
+.extra-content {
+  display: none;
+}
+.toggle-post {
+  background-color: plum;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+.filters {
+  margin-bottom: 10px;
+}
+.filter-btn {
+  background-color: gray;
+  color: #6a0dad;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.filter-btn:hover {
+  background-color: darkgray;
+}
+.sorting {
+  margin-bottom: 10px;
+}
+.sorting h4 {
+  margin: 6px 0;
+}
+.sort-btn {
+  background-color: gray;
+  color: black;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.sort-btn:hover {
+  background-color: darkgray;
+}
+.search-box {
+  margin-bottom: 10px;
+}
+.search-box input[type="text"] {
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid white;
+  font-size: 0,9em;
+}
+.pagination-controls {
+  margin-bottom: 10px;
+}
+.pagination-controls h4 {
+  margin: 6px 0;
+}
+#posts-per-page {
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid white;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+}
+.page-buttons {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+#prev-page,
+#next-page {
+  background-color: #a26ad8;
+  color: black;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+#prev-page:hover,
+#next-page:hover {
+  background-color: #6a0dad;
+}
+#page-info {
+  font-size: 0.8em;
 }
